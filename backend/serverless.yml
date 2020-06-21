@@ -1,0 +1,67 @@
+org: devin
+app: lighthouse-form
+service: backend
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-east-2
+  environment:
+    DB_HOST: localhost
+    DB_USERNAME: root
+    DB_PASSWORD: password
+  vpc:
+    securityGroupIds:
+      - sg-cb2987b7
+    subnetIds:
+      - subnet-4ba39402
+      - subnet-842d52df
+      - subnet-b6c5458a
+      - subnet-c71756ea
+      - subnet-2a117c26
+      - subnet-dfeb94ba
+
+functions:
+  user_login:
+    handler: api/user.login
+    events:
+      - http:
+          path: login
+          method: post
+          cors: true
+
+  user_signup:
+    handler: api/user.signup
+    events:
+      - http:
+          path: signup
+          method: post
+          cors: true
+  
+  user_me:
+    handler: api/user.me
+    events:
+      - http:
+          path: me
+          method: get
+          cors: true
+
+  user_refresh:
+    handler: api/user.refresh
+    events:
+      - http:
+          path: refresh
+          method: get
+          cors: true
+  
+  user_logout:
+    handler: api/user.logout
+    events:
+      - http:
+          path: logout
+          method: post
+          cors: true
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
