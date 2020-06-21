@@ -1,0 +1,22 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "axios-auth-refresh": "2.2.7",
+    "axios": "0.19.2",
+    "cookie": "0.4.1",
+    "next": "9.4.4",
+    "set-cookie-parser": "2.4.6",
+    "typescript": "3.9.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "author": "",
+  "license": "ISC"
+}
