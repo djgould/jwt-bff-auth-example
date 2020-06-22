@@ -50,8 +50,6 @@ export const getServerSideProps = wrapper.getServerSideProps(async ({ req, res, 
     http.defaults.headers.Authorization = req.headers.Authorization || "";
     try {
       const resp = await http.get('/api/refresh');
-      console.log(resp);
-      console.log('set-cookie', resp.headers['set-cookie']);
       res.setHeader('set-cookie', resp.headers['set-cookie']);
       const respCookie = setCookie.parse(resp.headers['set-cookie'])[0];
       http.defaults.headers.cookie = cookie.serialize(respCookie.name, respCookie.value);
